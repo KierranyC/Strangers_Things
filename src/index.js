@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Register, Search, Login, Posts } from '/.components'
+import { Register, Search, Login, Posts } from './components'
 
 
 const App = () => {
