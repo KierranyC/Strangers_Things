@@ -1,7 +1,7 @@
 export const COHORT_NAME = '2303-FTB-ET-WEB-PT'
 export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-const fetchPosts = async () => {
+export const fetchPosts = async () => {
     try {
         const response = await fetch(`${BASE_URL}/posts`)
 
@@ -12,5 +12,5 @@ const fetchPosts = async () => {
     } catch (error) {
         console.error(error) 
     }
-    fetchPosts();
+    
 }

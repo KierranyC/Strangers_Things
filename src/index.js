@@ -4,19 +4,19 @@ import { Register, Search, Login, Posts } from './components'
 
 
 const App = () => {
-    
+
     return (
         <div className='app'>
-        <Register />
-        <Search />
-        <select>
-            <option value='login'>Login</option>
-            <option value='register'>Register</option>
-        </select>
-        </div>
-        )
-    
-}
+         <Register /> 
+          <Search /> 
+          <select>
+             <option value='login'>Login</option>
+             <option value='register'>Register</option>
+         </select> 
+          <Posts />
+        </div> 
+    )
+} 
 
 
 ReactDOM.render(
