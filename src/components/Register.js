@@ -1,37 +1,63 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
+import Login from './Login'
+//import CreatePost from './CreatePost';
 
-// const Register = () => {
-//     const [register, setRegister] = useState([]);
+const Register = () => {
+  const [username, setUserame] = useState('')
+  const [password, setPassword]= useState('')
+  const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  
+ 
 
-//     const [firstName, setFirstName] = useState(null)
-//     const [lastName, setLastName] = useState(null)
-//     const [password, setPassword] = useState(null)
-//     const [confirmPassword, setConfirmPassword] = useState(null)
-//     const [email, setEmail] = useState(null)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    if (password !== passwordConfirmation) {
+       return 'passwords do not match'
+       
+    }
+    
+    try {
+      const response = await fetch('https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/users/register', {
+        method: 'POST',
+        headers: { 'Content-Type':
+          'application/json' },
+        body: JSON.stringify({ 
+           user: { username,
+           password } 
+          })
+      })
+        const data = await response.json()
+        console.log(data)
+        return data
+      } catch (error) {
+      console.error(error.message)
+    }
+  }
+  
 
-//     const handleSubmit = (event) => {
-//         console.log(firstName, lastName, password, confirmPassword, email)
-//     }
 
-//     return (
-//         <div className="auth-form">
-//             <form onSubmit={handleSubmit}>
-//                 <label htmlFor='first name'>First Name</label>
-//                 <input value={firstName} firstName='first name' {...register('first name', { required: true })} placeholder="first name" onChange={(event) => setFirstName(event.target.value)} />
-//                 <label htmlFor='last name'>Last Name</label>
-//                 <input value={lastName}{...register('last name', { required: true })} placeholder="last name" onChange={(event) => setLastName(event.target.value)} />
-//                 <label htmlFor='email'>Email</label>
-//                 <input value={password}{...register('email', { required: true })} placeholder="email" onChange={(event) => setEmail(event.target.value)} />
-//                 <label htmlFor='password'>Password</label>
-//                 <input value={confirmPassword}{...register('password', { required: true })} placeholder="*********" onChange={(event) => setPassword(event.target.value)} />
-//                 <label htmlFor='confirm password'>Confirm Password</label>
-//                 <input value={email} {...register('confirm password', { required: true })} placeholder="confirm password" onChange={(event) => setConfirmPassword(event.target.value)} />
-//                 <button>Submit</button>
-//             </form>
+  return ( 
+    <>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Userame:
+        <input type='text' value={username} onChange={(event) => setUserame(event.target.value)} />
+      </label>
+      <label>
+        Password:
+        <input type='password' value={password} onChange={(event) => setPassword(event.target.value)} />
+      </label>
+      <label>
+        Confirm Password:
+        <input type='password' value={passwordConfirmation} onChange={(event) => setPasswordConfirmation(event.target.value)} />
+      </label>
+      {/* {error && <div className='error'>{error}</div>} */}
+      <button type='submit'>Register</button>
+    </form>
+    <button>Already have an account? Log in!</button>
+    </>
+  )
 
-//         </div>
-//     )
+}
 
-// }
-
-//export default Register;
+export default Register;

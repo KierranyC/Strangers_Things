@@ -5,25 +5,25 @@ const Posts = () => {
     const [posts, setPosts] = useState([])
     console.log('posts: ', posts)
 
-    // useEffect(() => {
-    //     async function fetchPost() {
-    //         const response = await fetch('https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/posts')
-    //         const data = await response.json()
-    //         setPosts(data)
-    //     }
-    //     fetchPost()
-    // }, [])
-
     useEffect(() => {
-        fetch('https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/posts')
-            .then((res) => res.json())
-            .then((body) => {
-                setPosts(body.data.posts);
-            })
-            .catch((error) => {
-                console.log('uh oh', error);
-            });
-    }, []);
+        async function fetchPosts() {
+            const response = await fetch('https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/posts')
+            const data = await response.json()
+            setPosts(data.data.posts)
+        }
+        fetchPosts()
+    }, [])
+
+    // useEffect(() => {
+    //     fetch('https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/posts')
+    //         .then((res) => res.json())
+    //         .then((body) => {
+    //             setPosts(body.data.posts);
+    //         })
+    //         .catch((error) => {
+    //             console.log('uh oh', error);
+    //         });
+    // }, []);
 
     return (
         <div>
