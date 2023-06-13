@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 
 const Login = ({ onLogin }) => {
   const [username, setUserame] = useState("");
   const [password, setPassword] = useState("");
-  
+
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -12,13 +14,15 @@ const Login = ({ onLogin }) => {
       const response = await fetch("https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          user: { username, 
-          password } 
+        body: JSON.stringify({
+          user: {
+            username,
+            password
+          }
         })
       });
       const data = await response.json();
-      onLogin(data)
+      localStorage.getItem('token')
       console.log(data)
     } catch (error) {
       console.error(error.message);
@@ -27,6 +31,8 @@ const Login = ({ onLogin }) => {
 
   return (
     <>
+      <Navbar />
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <label>
           Username:

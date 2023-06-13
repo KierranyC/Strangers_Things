@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Register, Login, CreatePost } from './components';
-// import Posts from './components';
+import { Register, Login, Profile, Home, CreatePost } from './components';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 
-  const App = () => {
-     const [token, setToken] = useState("");
-  
-    function handleLogin(newToken) {
-      setToken(newToken);
-    }
-  
-    return (
-      <Router>
-        <Routes>
-          <Route exact path="/" element={{token} ?  <CreatePost token={token} />  :  <Register /> }/>
-          <Route exact path="/login" element={<Login onLogin={handleLogin}/>}/>
-          </Routes>
-      </Router>
-    )
-  }
+const App = () => {
+
+
+  return (
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/createpost' element={<CreatePost />} />
+      </Routes>
+    </Router>
+  )
+}
 
 
 ReactDOM.render(
-    <App />,
-    document.getElementById('app'),
-  );
+  <App />,
+  document.getElementById('app'),
+);

@@ -3,3 +3,5 @@ export { default as Register } from './Register.js';
 export { default as Search } from './Search.js';
 export { default as Posts } from './Posts.js';
 export { default as CreatePost } from './CreatePost.js';
+export { default as Home } from './Home';
+export { default as Profile } from './Profile';
