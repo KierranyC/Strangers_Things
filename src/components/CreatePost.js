@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 
 
-const CreatePost = ({ token }) => {
+const CreatePost = ({ token, setToken }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
