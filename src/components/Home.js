@@ -9,7 +9,6 @@ const Home = () => {
 
         <div className='Home'>
             <h1>Strangers Things</h1>
-            <Navbar />
             <Posts />
         </div>
     )

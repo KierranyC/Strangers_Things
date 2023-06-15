@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './Navbar';
 
 
-const CreatePost = ({ token, setToken }) => {
+const CreatePost = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
@@ -38,7 +38,6 @@ const CreatePost = ({ token, setToken }) => {
 
   return (
     <>
-      <Navbar />
       <h1>CreatePost</h1>
       <form onSubmit={handleCreatePost}>
         <label>

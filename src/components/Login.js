@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
 
-const Login = ({ token, setToken }) => {
+const Login = ({ setToken }) => {
   const [username, setUserame] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,8 +22,9 @@ const Login = ({ token, setToken }) => {
         })
       });
       const data = await response.json();
-      setLoggedIn(data.data.token)
-      // localStorage.setItem('token', data.data.token)
+      setUserame('')
+      setPassword('')
+      setToken(data.data.token)
       console.log(data)
       return data
     } catch (error) {
@@ -33,16 +34,15 @@ const Login = ({ token, setToken }) => {
 
   return (
     <>
-      <Navbar />
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <label>
           Username:
-          <input type="text" value={username} required onChange={event => setUserame(event.target.value)}/>
+          <input type="text" value={username} required onChange={event => setUserame(event.target.value)} />
         </label>
         <label>
           Password:
-          <input type="password" value={password} required onChange={event => setPassword(event.target.value)}/>
+          <input type="password" value={password} required onChange={event => setPassword(event.target.value)} />
         </label>
         <button type="submit">Login</button>
       </form>
