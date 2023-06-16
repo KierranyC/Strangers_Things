@@ -3,13 +3,13 @@ import Posts from "./Posts";
 import Navbar from "./Navbar";
 
 
-const Home = () => {
+const Home = ({ token }) => {
 
     return (
 
         <div className='Home'>
             <h1>Strangers Things</h1>
-            <Posts />
+            <Posts token={token} />
         </div>
     )
 }

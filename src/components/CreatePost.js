@@ -16,7 +16,7 @@ const CreatePost = ({ token }) => {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Authorizatoin': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
           post: {

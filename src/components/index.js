@@ -5,4 +5,5 @@ export { default as Posts } from './Posts.js';
 export { default as CreatePost } from './CreatePost.js';
 export { default as Home } from './Home';
 export { default as Profile } from './Profile';
-export { default as Navbar } from './Navbar.js'
+export { default as Navbar } from './Navbar.js';
+export { default as PostView } from './PostView';

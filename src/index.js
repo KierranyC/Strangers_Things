@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Register, Login, Profile, Home, CreatePost, Navbar } from './components';
+import { Register, Login, Profile, Home, CreatePost, Navbar, PostView } from './components';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
@@ -29,11 +29,12 @@ const App = () => {
     <Router>
       <Navbar token={token} setToken={setAndStoreToken} logout={logout} />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home token={setAndStoreToken} />} />
         <Route path='/login' element={<Login token={token} setToken={setAndStoreToken} />} />
         <Route path='/register' element={<Register setToken={setAndStoreToken} />} />
         <Route path='/profile' element={<Profile token={token} setToken={setAndStoreToken} />} />
         <Route path='/createpost' element={<CreatePost token={token} />} />
+        <Route path='/postview' element={<PostView token={setToken} />} />
       </Routes>
     </Router>
   )
