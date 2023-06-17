@@ -1,6 +1,5 @@
 import React from "react";
 import Posts from "./Posts";
-import Navbar from "./Navbar";
 
 
 const Home = ({ token }) => {

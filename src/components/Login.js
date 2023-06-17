@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = ({ setToken }) => {
   const [username, setUserame] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
 
   const handleLogin = async (event) => {
@@ -26,6 +25,9 @@ const Login = ({ setToken }) => {
       setPassword('')
       setToken(data.data.token)
       console.log(data)
+      if (setToken) {
+        navigate('/profile')
+      }
       return data
     } catch (error) {
       console.error(error.message);

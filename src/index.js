@@ -20,21 +20,18 @@ const App = () => {
     setToken(userToken)
   }
 
-  const logout = () => {
-    setToken('')
-    localStorage.removeItem('token')
-  }
+
 
   return (
     <Router>
-      <Navbar token={token} setToken={setAndStoreToken} logout={logout} />
+      <Navbar token={token} setToken={setAndStoreToken} />
       <Routes>
-        <Route path='/' element={<Home token={setAndStoreToken} />} />
+        <Route path='*' element={<Home token={setAndStoreToken} />} />
         <Route path='/login' element={<Login token={token} setToken={setAndStoreToken} />} />
         <Route path='/register' element={<Register setToken={setAndStoreToken} />} />
-        <Route path='/profile' element={<Profile token={token} setToken={setAndStoreToken} />} />
+        <Route path='/profile' element={<Profile token={setAndStoreToken} />} />
         <Route path='/createpost' element={<CreatePost token={token} />} />
-        <Route path='/postview' element={<PostView token={setToken} />} />
+        {/* <Route path='/postview' element={<PostView token={setToken} />} /> */}
       </Routes>
     </Router>
   )

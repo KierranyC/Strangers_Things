@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { redirect } from 'react-router-dom';
-import Navbar from './Navbar';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = ({ setToken }) => {
   const [username, setUserame] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
+  const navigate = useNavigate()
 
 
   const handleSubmit = async (event) => {
@@ -35,6 +34,9 @@ const Register = ({ setToken }) => {
       setPassword('')
       setToken(data.data.token)
       console.log(data)
+      if (setToken) {
+        navigate('/login')
+      }
       return data
     } catch (error) {
       console.error(error.message)

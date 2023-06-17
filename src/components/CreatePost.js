@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
 
 
 const CreatePost = ({ token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [willDeliver, setWillDeliver] = useState('')
+  const [location, setLocation] = useState('')
+  const [willDeliver, setWillDeliver] = useState(false)
 
   const handleCreatePost = async (event) => {
     event.preventDefault();
@@ -23,6 +23,7 @@ const CreatePost = ({ token }) => {
             title,
             description,
             price,
+            location,
             willDeliver
           }
         })
@@ -53,8 +54,12 @@ const CreatePost = ({ token }) => {
           <input type='text' value={price} onChange={(event) => setPrice(event.target.value)} />
         </label>
         <label>
+          Location:
+          <input type='text' value={location} onChange={(event) => setLocation(event.target.value)} />
+        </label>
+        <label>
           Will Deliver?
-          <input type='text' value={willDeliver} onChange={(event) => setWillDeliver(event.target.value)} />
+          <input type='checkbox' checked={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)} />
           {/* <button onClick={() => setWillDeliver(true)}>Yes</button> */}
           {/* <button onClick={() => setWillDeliver(false)}>No</button> */}
           {/* {willDeliver !== null && <p>Answer: {willDeliver ? 'Yes' : 'No'}</p>} */}
