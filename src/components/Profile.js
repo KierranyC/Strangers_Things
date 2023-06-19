@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 
-const Profile = ({ token }) => {
+const Profile = () => {
     const [currentUser, setCurrentUser] = useState('')
     const [userPosts, setUserPosts] = useState([])
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -16,8 +17,8 @@ const Profile = ({ token }) => {
                 })
                 console.log(response)
                 const data = await response.json();
-                setCurrentUser(data.username)
-                setUserPosts(data.posts)
+                setCurrentUser(data.data.username)
+                setUserPosts(data.data.posts)
                 console.log(data);
                 return data
             } catch (err) {
