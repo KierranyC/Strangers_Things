@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 
 const CreatePost = ({ token }) => {
   const [title, setTitle] = useState("");
@@ -7,10 +7,10 @@ const CreatePost = ({ token }) => {
   const [price, setPrice] = useState('')
   const [location, setLocation] = useState('')
   const [willDeliver, setWillDeliver] = useState(false)
+  const navigate = useNavigate()
 
   const handleCreatePost = async (event) => {
     event.preventDefault();
-    console.log('hi');
     try {
       const response = await fetch("https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-PT/posts", {
         method: "POST",
@@ -29,8 +29,10 @@ const CreatePost = ({ token }) => {
         })
       })
       const data = await response.json()
-
       console.log(data)
+      if (data.success) {
+        navigate('/profile')
+      }
       return data
     } catch (error) {
       console.error(error)
@@ -38,35 +40,32 @@ const CreatePost = ({ token }) => {
   }
 
   return (
-    <>
-      <h1>CreatePost</h1>
+    <div className='create-post'>
+      <h1 className='create-post-form'>CreatePost</h1>
       <form onSubmit={handleCreatePost}>
-        <label>
+        <label className='create-post-title'>
           Title:
-          <input type='text' value={title} onChange={(event) => setTitle(event.target.value)} />
+          <input type='text' value={title} onChange={(event) => setTitle(event.target.value)} className='create-title-input' />
         </label>
-        <label>
+        <label className='create-post-description'>
           Description:
-          <input type='text' value={description} onChange={(event) => setDescription(event.target.value)} />
+          <input type='text' value={description} onChange={(event) => setDescription(event.target.value)} className='create-description-input' />
         </label>
-        <label>
+        <label className='create-post-price'>
           Price:
-          <input type='text' value={price} onChange={(event) => setPrice(event.target.value)} />
+          <input type='text' value={price} onChange={(event) => setPrice(event.target.value)} className='create-price-input' />
         </label>
-        <label>
+        <label className='create-post-location'>
           Location:
-          <input type='text' value={location} onChange={(event) => setLocation(event.target.value)} />
+          <input type='text' value={location} onChange={(event) => setLocation(event.target.value)} className='create-location-input' />
         </label>
-        <label>
+        <label className='create-post-delivery'>
           Will Deliver?
-          <input type='checkbox' checked={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)} />
-          {/* <button onClick={() => setWillDeliver(true)}>Yes</button> */}
-          {/* <button onClick={() => setWillDeliver(false)}>No</button> */}
-          {/* {willDeliver !== null && <p>Answer: {willDeliver ? 'Yes' : 'No'}</p>} */}
+          <input type='checkbox' checked={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)} className='create-delivery-input' />
         </label>
-        <button type="submit">Create Post</button>
+        <button className='create-post-button' type="submit">Create Post</button>
       </form>
-    </>
+    </div>
   );
 };
 

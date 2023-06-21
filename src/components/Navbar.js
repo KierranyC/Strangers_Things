@@ -12,53 +12,38 @@ const Navbar = ({ token, setToken }) => {
         navigate('/login')
     }
 
-    const conditionallyRenderLoggedInNav = () => {
-        if (token) {
-            return (
+    return (
+
+        <nav className="navbar">
+            <h1 className="site-title">Stranger's Things!</h1>
+            {token ? (
                 <>
-                    <Link to='/'>
+                    <Link to='/' className="navbar-link-home">
                         Home
                     </Link>
-                    {/* <Link to='/postview'>
-                        Post View
-                    </Link> */}
-                    <Link to='/profile'>
+                    <Link to='/profile' className="navbar-link-profile">
                         Profile
                     </Link>
-                    <Link to='/createpost'>
+                    <Link to='/createpost' className="navbar-link-createpost">
                         CreatePost
                     </Link>
-                    <Button variant={'contained'} onClick={logout}>
+                    <Button variant={'outlined'} onClick={logout} className="navbar-link-logout">
                         Log Out
                     </Button>
                 </>
-            )
-        }
-
-        else {
-            return (
+            ) : (
                 <>
-                    <Link to='/'>
+                    <Link to='/' className="navbar-link-home">
                         Home
                     </Link>
-                    {/* <Link to='/postview'>
-                        Post View
-                    </Link> */}
-                    <Link to='/login'>
+                    <Link to='/login' className="navbar-link-login">
                         Login
                     </Link>
-                    <Link to='/register'>
+                    <Link to='/register' className="navbar-link-register">
                         Register
                     </Link>
                 </>
-            )
-        }
-    }
-
-    return (
-
-        <nav>
-            {conditionallyRenderLoggedInNav()}
+            )}
         </nav>
 
     )

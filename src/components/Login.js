@@ -34,22 +34,23 @@ const Login = ({ setToken }) => {
     }
   };
 
+
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <label>
+    <div className='login'>
+      <h1 className='login-title'>Login</h1>
+      <form className='login-form' onSubmit={handleLogin}>
+        <label className='login-username'>
           Username:
-          <input type="text" value={username} required onChange={event => setUserame(event.target.value)} />
+          <input type="text" value={username} required onChange={event => setUserame(event.target.value)} className='login-username-input' />
         </label>
-        <label>
+        <label className='login-password'>
           Password:
-          <input type="password" value={password} required onChange={event => setPassword(event.target.value)} />
+          <input type="password" value={password} required onChange={event => setPassword(event.target.value)} className='login-password-input' />
         </label>
-        <button type="submit">Login</button>
+        <button className='login-button' type="submit">Login</button>
       </form>
-      <Link to='/register'><button>Dont't have an account? Register now!</button></Link>
-    </>
+      <Link to='/register' className='redirect-register'><button>Dont't have an account? Register now!</button></Link>
+    </div>
   );
 };
 

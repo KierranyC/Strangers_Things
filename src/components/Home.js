@@ -2,13 +2,13 @@ import React from "react";
 import Posts from "./Posts";
 
 
-const Home = ({ token }) => {
+const Home = ({ token, posts, setPosts, isLoading, setIsLoading, showModal, setShowModal, loggedIn }) => {
 
     return (
 
         <div className='Home'>
-            <h1>Strangers Things</h1>
-            <Posts token={token} />
+            <Posts token={token} posts={posts} setPosts={setPosts} isLoading={isLoading} setIsLoading={setIsLoading} showModal={showModal} setShowModal={setShowModal}
+                loggedIn={loggedIn} />
         </div>
     )
 }

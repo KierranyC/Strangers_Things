@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { TextField, Typography } from '@mui/material';
 
 const Register = ({ setToken }) => {
-  const [username, setUserame] = useState('')
+  const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -30,7 +31,7 @@ const Register = ({ setToken }) => {
         })
       })
       const data = await response.json()
-      setUserame('')
+      setUsername('')
       setPassword('')
       setToken(data.data.token)
       console.log(data)
@@ -43,30 +44,35 @@ const Register = ({ setToken }) => {
     }
   }
 
-  return (
-    <>
 
-      <h1>Register</h1>
+
+  return (
+    <div className='register'>
+      <h1 className='register-title'>Register</h1>
       <form className="Register-form" onSubmit={handleSubmit}>
-        <label>
-          Userame:
-          <input type='text' minLength={8} maxLength={15} value={username} onChange={(event) => setUserame(event.target.value)} />
+        <label className='register-username'>
+          Username:
+          <input type='text' minLength={8} maxLength={15} value={username} required onChange={(event) => setUsername(event.target.value)} className='register-username-input' />
         </label>
-        <label> Email:
-          <input type='email' value={email} onChange={(event) => setEmail(event.target.value)} />
+        <br />
+        <label className='register-email'> Email:
+          <input type='email' value={email} required onChange={(event) => setEmail(event.target.value)} className='register-email-input' />
         </label>
-        <label>
+        <br />
+        <label className='register-password'>
           Password:
-          <input type='password' minLength={8} maxLength={15} value={password} onChange={(event) => setPassword(event.target.value)} />
+          <input type='password' minLength={8} maxLength={15} value={password} required onChange={(event) => setPassword(event.target.value)} className='register-password-input' />
         </label>
-        <label>
+        <br />
+        <label className='register-confirm-password'>
           Confirm Password:
-          <input type='password' value={passwordConfirmation} onChange={(event) => setPasswordConfirmation(event.target.value)} />
+          <input type='password' value={passwordConfirmation} required onChange={(event) => setPasswordConfirmation(event.target.value)} className='register-confirm-password-input' />
         </label>
-        <button type='submit'>Register</button>
+        <br />
+        <button type='submit' className='register-account-button'>Register</button>
       </form>
-      <Link to='/login'><button>Already have an account? Log in!</button></Link>
-    </>
+      <Link to='/login' className='redirect-login'><button>Already have an account? Log in!</button></Link>
+    </div>
   )
 
 }
