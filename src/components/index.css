@@ -734,32 +734,32 @@
   .post-feed-container,
   .post-details,
   .modal-container {
-    width: 100%;
+    width: 90%;
     box-sizing: border-box;
     margin: auto;
-    padding: 10px;
+    padding: 15px;
   }
 
   .register,
   .login,
   .create-post {
-    width: 100%;
+    width: 90%;
     padding: 20px;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .search-bar {
-    width: 100%;
+    width: 90%;
     flex-direction: column;
   }
 
   .search-bar-input {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
   }
 
   .clear-button {
-    width: 100%;
+    width: 90%;
   }
 
   body,
