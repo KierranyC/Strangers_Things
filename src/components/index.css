@@ -708,6 +708,7 @@
 
 /* MEDIA QUERIES */
 @media (max-width: 768px) {
+
   .navbar {
     flex-direction: column;
     padding: 10px;
@@ -723,36 +724,28 @@
     margin: 5px 0;
   }
 
-  .user-profile {
-    width: 100%;
-  }
-
   .profile-post-view,
   .profile-posts,
   .sent-messages-container,
   .register,
   .login,
-  .create-post {
-    width: 90%;
-    margin: auto;
-    padding: 10px;
-  }
-
+  .create-post,
   .posts-feed-container,
   .post-feed-container,
-  .post-details {
-    width: 100%;
-    padding: 15px;
-  }
-
+  .post-details,
   .modal-container {
-    width: 90%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 10px;
   }
 
   .register,
   .login,
   .create-post {
     width: 100%;
+    padding: 20px;
+    margin: 0 auto;
   }
 
   .search-bar {
@@ -767,5 +760,10 @@
 
   .clear-button {
     width: 100%;
+  }
+
+  body,
+  html {
+    overflow-x: hidden;
   }
 }
