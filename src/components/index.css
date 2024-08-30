@@ -705,3 +705,67 @@
   font-size: 1.2rem;
   margin-top: 1rem;
 }
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .navbar-link-home,
+  .navbar-link-profile,
+  .navbar-link-createpost,
+  .navbar-link-logout,
+  .navbar-link-login,
+  .navbar-link-register {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+
+  .user-profile {
+    width: 100%;
+  }
+
+  .profile-post-view,
+  .profile-posts,
+  .sent-messages-container,
+  .register,
+  .login,
+  .create-post {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .posts-feed-container,
+  .post-feed-container,
+  .post-details {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .modal-container {
+    width: 90%;
+  }
+
+  .register,
+  .login,
+  .create-post {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .search-bar-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .clear-button {
+    width: 100%;
+  }
+}
